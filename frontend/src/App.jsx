@@ -1,18 +1,15 @@
-import { useState } from "react";
+//import { useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("/");
-
 const App = () => {
-  const [message, setMessage] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    socket.on("message", message);
-  };
+  //const [message, setMessage] = useState("");
+
+  const socket = io("http://localhost:8080/");
+  socket.emit("message", "Hola desde el front");
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <input
-        onChange={(e) => setMessage(e.target.value)}
+        //onChange={(e) => setMessage(e.target.value)}
         type="text"
         placeholder="escribe tu mensaje..."
       />

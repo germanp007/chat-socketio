@@ -8,16 +8,15 @@ const httpServer = server.listen(PORT, () => {
   console.log("Servidor Escuchando en el puerto:" + PORT);
 });
 
-server.use(
+const io = new Server(httpServer).use(
   cors({
-    origin: "http://localhost:5173/",
+    origin: "http://localhost:5173",
   })
 );
-const io = new Server(httpServer);
 
 io.on("connection", (socket) => {
-  console.log("cliente conectado");
-  socket.on("message", (data) => {
-    console.log(data);
+  console.log("se ha conectado un cliente");
+  socket.on("message", (socket) => {
+    console.log(socket);
   });
 });
