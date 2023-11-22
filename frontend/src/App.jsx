@@ -7,7 +7,7 @@ const App = () => {
   const socket = io("http://localhost:8080/");
   socket.emit("message", "Hola desde el front");
   return (
-    <form>
+    <form onSubmit={}> 
       <input
         //onChange={(e) => setMessage(e.target.value)}
         type="text"
